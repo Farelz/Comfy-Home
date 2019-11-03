@@ -105,4 +105,26 @@ body {
   background: transparent;
   color: var(--primaryColor);
 }
+
 /* END OF HERO */
+
+/* PRODUCTS */
+
+.products {
+  padding: 4rem 0;
+}
+
+.section-title h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 5rem;
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+}
+
+.products-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+  display: grid;
+}
