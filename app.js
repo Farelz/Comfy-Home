@@ -22,6 +22,13 @@ class Products {
       let result = await fetch("products.json");
       let data = await result.json();
       let products = data.items;
+      products = products.map(item => {
+        const { title, price } = item.fields,
+          { id } = item.sys,
+          { image } = item.fields.image.fields.file.url;
+        return { title, price, id, image };
+      });
+      return products;
     } catch (error) {
       console.log(error);
     }
@@ -30,7 +37,15 @@ class Products {
 
 //DISPLAY PRODUCTS
 
-class UI {}
+class UI {
+  displayProducts(products) {
+    let result = "";
+    products.forEach(product => {
+      result += `
+      `;
+    });
+  }
+}
 
 //LOCAL STORAGE
 
@@ -41,5 +56,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const products = new Products();
 
   //GET ALL PRODUCTS
-  products.getProducts().then(data => console.log(data));
+  products.getProducts().then(products => ui.displayProducts(products));
 });
