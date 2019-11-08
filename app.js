@@ -42,8 +42,24 @@ class UI {
     let result = "";
     products.forEach(product => {
       result += `
+      <!-- SINGLE PRODUCTS -->
+
+        <article class="product">
+          <div class="img-container">
+            <img src=${product.image} alt="Product" class="product-img">
+            <button class="bag-btn" data-id=${product.id}>
+              <i class="fas fa-shopping-cart"></i>
+              Add To Bag
+            </button>
+          </div>
+          <h3>${product.title}</h3>
+         <h4> <span>&#8358;</span>${product.price}</h4>
+        </article>
+
+    <!-- END OF SINGLE PRODUCTS -->
       `;
     });
+    productsDOM.innerHTML = result;
   }
 }
 
