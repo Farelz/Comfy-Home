@@ -76,6 +76,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const products = new Products();
 
   //GET ALL PRODUCTS
-  products.getProducts().then(products => ui.displayProducts(products));
-  Storage.saveProducts(products);
+  products
+    .getProducts()
+    .then(products => {
+      ui.displayProducts(products);
+      Storage.saveProducts(products);
+    })
+    .then(() => {
+      ui.getBagButtons();
+    });
 });
