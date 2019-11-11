@@ -78,6 +78,22 @@ class UI {
       button.addEventListener("click", event => {
         event.target.innerText = "In Cart";
         event.target.disabled = true;
+
+        //GET PRODUCT FROM PRODUCTS
+
+        let cartItem = { ...Storage.getProduct(id), amount: 1 };
+
+        //ADD PRODUCT TO THE CART
+
+        cart = [...cart, cartItem];
+
+        //SAVE CART IN LOCAL STORAGE
+
+        Storage.saveCart(cart);
+
+        //SET CART VALUES
+
+        this.setCartValues(cart);
       });
     });
   }
@@ -91,6 +107,10 @@ class Storage {
   }
   static getProduct(id) {
     let products = JSON.parse(localStorage.getItem("products"));
+    return products.find(product => product.id === id);
+  }
+  static saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
   }
 }
 
