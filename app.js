@@ -61,6 +61,21 @@ class UI {
     });
     productsDOM.innerHTML = result;
   }
+  getBagButtons() {
+    const buttons = [...document.querySelectorAll(".bag-btn")];
+    buttons.forEach(button => {
+      let id = button.dataset.id;
+      let inCart = cart.find(item => item.id === id);
+      if(inCart){
+        button.innerText = 'In Cart';
+        button.disabled = true;
+      } else {
+        button.addEventListener('click', event => {
+          console.log(event);
+        })
+      }
+    });
+  }
 }
 
 //LOCAL STORAGE
