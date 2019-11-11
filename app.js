@@ -94,6 +94,9 @@ class UI {
         //SET CART VALUES
 
         this.setCartValues(cart);
+
+        //DISPLAY CART ITEM
+        this.addCartItem(cartItem);
       });
     });
   }
@@ -106,7 +109,25 @@ class UI {
     });
     cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
     cartItems.innerText = itemsTotal;
-    console.log(cartTotal, cartItems);
+  }
+  addCartItem(item) {
+    const div = document.createElement("div");
+    div.classList.add("cart-item");
+    div.innerHTML = `
+    <img src=${item.image} alt="Product">
+          <div>
+            <h4>${item.title}</h4>
+            <h5><span>&#8358;</span>${item.price}</h5>
+            <span class="remove-item" data-id=${item.id}>remove</span>
+          </div>
+          <div>
+            <i class="fas fa-chevron-up" data-id=${item.id}></i>
+            <p class="item-amount">${item.amount}</p>
+            <i class="fas fa-chevron-down" data-id=${item.id}></i>
+          </div>
+    `;
+    cartContent.appendChild(div);
+    console.log(cartContent);
   }
 }
 
